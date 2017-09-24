@@ -1,4 +1,3 @@
-
 module.exports = (args) => {
 	let config;
 

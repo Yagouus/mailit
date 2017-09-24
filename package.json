@@ -3,6 +3,9 @@
   "version": "0.0.3",
   "description": "Drop-in email microservice.",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [
     "mail",
     "email",
@@ -26,9 +29,10 @@
     "express": "^4.15.3",
     "nodemailer": "^4.0.1",
     "swagpi": "^0.1.1",
-    "vorpal": "^1.12.0"
+    "vorpal": "^1.12.0",
+    "cors": "^2.8.4"
   },
-  "engines" : { 
-    "node" : ">=7.0.0"
-  }
+  "engines": {
+    "node": ">=7.0.0"
+  },
 }

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const vorpal = require('vorpal')();
 const swagpi = require('swagpi');
+const cors = require('cors')
 const chalk = vorpal.chalk;
 
 const swagpiConfig = require('./src/swagpi.config.js');
@@ -12,6 +13,7 @@ const routes = require('./src/routes');
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 middleware.call(app);
 
 swagpi(app, {
@@ -19,6 +21,10 @@ swagpi(app, {
 	css: 'img { width: 96px !important; margin-top: 8px !important; }',
 	config: swagpiConfig
 });
+
+app.get('/email', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
 
 const init = (args) => {
 
@@ -52,4 +58,3 @@ vorpal.command('_start')
 vorpal.log('  MailIt SMTP API');
 vorpal.exec(`_start ${process.argv.slice(2).join(' ')}`);
 vorpal.delimiter(chalk.cyan('Mail') + chalk.grey('It:'));
-
